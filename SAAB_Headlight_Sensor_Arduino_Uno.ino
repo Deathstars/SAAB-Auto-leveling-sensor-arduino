@@ -9,9 +9,6 @@ uint8_t LOW_O = HIGH;
 
 void setup() 
 {
-  WiFi.mode(WIFI_OFF);
-  WiFi.forceSleepBegin();                  // turn off ESP8266 RF
-  delay(1);                                // give RF section time to shutdown
   Serial.begin(115200);
   pinMode(Mosfet,OUTPUT);
   pinMode(A0, INPUT); //Potentiometer is connected on PIN A0
