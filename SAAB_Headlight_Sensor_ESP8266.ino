@@ -1,5 +1,5 @@
 #include "ESP8266WiFi.h"
-int LED = 4; //Pin D2 on the esp8266
+int MOSFET = 4; //Pin D2 on the esp8266
 int potval = 0;
 int oposite = 0;
 int lastval = 0;
@@ -14,7 +14,7 @@ void setup()
   WiFi.forceSleepBegin();                  // turn off ESP8266 RF
   delay(1);                                // give RF section time to shutdown
   Serial.begin(115200);
-  pinMode(LED,OUTPUT);
+  pinMode(MOSFET,OUTPUT);
   pinMode(A0, INPUT);
 }
 
@@ -26,34 +26,34 @@ void loop()
 
 void start_of_transmition()
 {
-  digitalWrite(LED, HIGH_O);
+  digitalWrite(MOSFET, HIGH_O);
   delay(2);
-  digitalWrite(LED, LOW_O);
+  digitalWrite(MOSFET, LOW_O);
   delay(5);
-  digitalWrite(LED, HIGH_O);
+  digitalWrite(MOSFET, HIGH_O);
   delayMicroseconds(1000);
 
 }
 
 void data_of_transmissino()
 {
-  digitalWrite(LED, HIGH_O);
+  digitalWrite(MOSFET, HIGH_O);
   delayMicroseconds(potval);
-  digitalWrite(LED, LOW_O);
+  digitalWrite(MOSFET, LOW_O);
   delayMicroseconds(oposite);
 }
 
 void end_of_transmission()
 {
-  digitalWrite(LED, LOW_O);
+  digitalWrite(MOSFET, LOW_O);
   delayMicroseconds(1000);
-  digitalWrite(LED, HIGH_O);
+  digitalWrite(MOSFET, HIGH_O);
   delayMicroseconds(1000);
-  digitalWrite(LED, LOW_O);
+  digitalWrite(MOSFET, LOW_O);
   delayMicroseconds(500);
-  digitalWrite(LED, HIGH_O);
+  digitalWrite(MOSFET, HIGH_O);
   delayMicroseconds(500);
-  digitalWrite(LED, LOW_O);
+  digitalWrite(MOSFET, LOW_O);
   delay(4);
 }
 
